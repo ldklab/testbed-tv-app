@@ -1,0 +1,23 @@
+mat-toolbar{
+  margin-bottom: 3rem;
+  background-color: transparent;
+  overflow: hidden;
+
+  border: 1px solid red;
+}
+
+
+#container-1{
+  display: flex;
+}
+
+app-sidebar{
+  width: 20%;
+  height: 100%;
+  text-align: center;
+}
+
+app-cardholder{
+  margin-left: 1rem;
+  width: 80%;
+}
