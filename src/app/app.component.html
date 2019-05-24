@@ -1,11 +1,12 @@
 <mat-toolbar>
   <div class="topnav-left">
     <mat-icon>search</mat-icon>
-    <input type="text">
+    <input type="text" class="searchInput" placeholder="Search movies, TV, more">
   </div>
 
   <div class="topnav-right">
-    <mat-icon style="float:right;">settings</mat-icon>
+      {{ now | date:'HH:mm:ss'}}
+    <mat-icon>settings</mat-icon>
   </div>
 
 </mat-toolbar>

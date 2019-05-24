@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'TV-app';
+  public now: Date = new Date();
+
+  constructor() {
+      setInterval(() => {
+        this.now = new Date();
+      }, 1);
+  }
 }

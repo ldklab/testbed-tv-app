@@ -9,8 +9,9 @@
 </mat-card>
 -->
 
-<div class="myCard" *ngFor="let card of cards">
-  <img [src]="card.image">
-  <br>
-  <p>{{ card.title }}</p>
+<div class="myCard" *ngFor="let card of cards" tabindex="1234">
+  <div class="imageHolder">
+    <img [src]="card.image">
+  </div>
+  {{ card.title }}
 </div>

@@ -4,6 +4,19 @@ mat-toolbar{
   overflow: hidden;
 
   border: 1px solid red;
+
+  vertical-align: middle;
+  color: lightgray;
+}
+
+.searchInput{
+  width: 250px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  margin-left: 10px;
+
+  vertical-align: middle;
 }
 
 
