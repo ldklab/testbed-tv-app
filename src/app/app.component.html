@@ -7,7 +7,7 @@
   <div class="topnav-right">
 
     <button mat-button (click)="openDialog()"><mat-icon>cast</mat-icon></button>
-    <button mat-button><mat-icon>backup</mat-icon></button>
+    <button mat-button (click)="openSnackBar()"><mat-icon>backup</mat-icon></button>
     <button mat-button><mat-icon>settings</mat-icon></button>
 
     {{ now | date:'HH:mm'}}

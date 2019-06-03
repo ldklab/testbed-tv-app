@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
+import { SocketService } from './socket.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ import { DialogComponent } from './dialog/dialog.component';
 export class AppComponent {
   public now: Date = new Date();
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog,
+    public socketService:SocketService) {
       setInterval(() => {
         this.now = new Date();
       }, 1);
@@ -51,5 +53,9 @@ export class AppComponent {
       console.log('The dialog was closed');
       //this.animal = result;
     });
+  }
+
+  openSnackBar(){
+    this.socketService.showSnackBar("Test");
   }
 }
