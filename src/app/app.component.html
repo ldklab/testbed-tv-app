@@ -1,12 +1,16 @@
 <mat-toolbar>
   <div class="topnav-left">
-    <mat-icon>search</mat-icon>
-    <input type="text" class="searchInput" placeholder="Search movies, TV, more">
+    <button mat-button><mat-icon>search</mat-icon></button>
+    <input type="text" class="searchInput" placeholder="Search movies, TV and more">
   </div>
 
   <div class="topnav-right">
-      {{ now | date:'HH:mm:ss'}}
-    <mat-icon>settings</mat-icon>
+
+    <button mat-button (click)="openDialog()"><mat-icon>cast</mat-icon></button>
+    <button mat-button><mat-icon>backup</mat-icon></button>
+    <button mat-button><mat-icon>settings</mat-icon></button>
+
+    {{ now | date:'HH:mm'}}
   </div>
 
 </mat-toolbar>

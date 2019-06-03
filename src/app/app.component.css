@@ -3,19 +3,35 @@ mat-toolbar{
   background-color: transparent;
   overflow: hidden;
 
-  border: 1px solid red;
+  /*border: 1px solid red;*/
 
   vertical-align: middle;
   color: lightgray;
+  display: table;
+
 }
 
 .searchInput{
-  width: 250px;
+  color: white;
+  width: 400px;
   background: transparent;
   border: none;
   font-size: 20px;
   margin-left: 10px;
 
+  vertical-align: middle;
+  vertical-align:baseline;
+}
+
+.topnav-left{
+  text-align: left;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.topnav-right{
+  text-align: right;
+  display: table-cell;
   vertical-align: middle;
 }
 

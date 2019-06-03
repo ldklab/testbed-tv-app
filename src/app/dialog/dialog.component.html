@@ -1,0 +1,37 @@
+<h1 mat-dialog-title style="text-align: center; font-size: 30px">{{ data.title }}</h1>
+<div mat-dialog-content>
+  <b>Description:</b>
+  <p>{{ data.description }}</p>
+
+  <b>Instruction:</b>
+    <ul>
+      <li *ngFor="let step of data.instruction">{{ step }}</li>
+    </ul>
+
+  <b>Information needed:</b><br>
+    <div *ngFor="let input of data.inputs">
+      <mat-form-field>
+        <span *ngIf="input.type !== 'select'">
+          {{ input.name }}: <input matInput [type]="input.type">
+        </span>
+        <span *ngIf="input.type === 'select'">
+            {{ input.name }}: <mat-select>
+                                <mat-option *ngFor="let element of input.elements; let i = index" value="asd">
+                                  {{ element }}
+                                </mat-option>
+                              </mat-select>
+          </span>
+      </mat-form-field>
+    </div>
+
+    <!--
+        {
+        name: "Device type",
+        type: "select",
+        elements: ["TV", "Computer", "Smartphone", "Camera", "Custon device"],
+        required: true
+    -->
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onOkClick()">Ok</button>
+</div>
