@@ -19,7 +19,7 @@ export class AppComponent {
   }
 
   notification = {
-    title: "Warning",
+    title: "Danger",
     description: "A new urecognizable device was plugged to the network. In order to better secure the network please perform the following actions and provide the requested information.",
     instruction: [
       "Step 1",
@@ -41,6 +41,12 @@ export class AppComponent {
       }
     ]
   }
+/*
+  notification = {
+    title: "Warning",
+    description: "Unusual traffic goint to <device_name> was detected and blocked.",
+    specific: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non orci diam. Nam sollicitudin justo eu laoreet sodales. Fusce ut sollicitudin ligula. Vivamus sed pretium arcu. Nullam dignissim turpis risus, in lacinia ligula ultricies a. Cras eleifend nisl eu porttitor fringilla. Duis sed leo nec tortor malesuada dictum. Vivamus at orci eget tortor porta faucibus. Duis ex ligula, commodo sed metus quis, pharetra tincidunt metus. Sed non ornare odio, at porta ex."
+  }*/
 
   openDialog(){
     const dialogRef = this.dialog.open(DialogComponent, {

@@ -1,0 +1,14 @@
+#title {
+  cursor: pointer;
+}
+
+#content {
+  transition: all 0.5s ease ;
+  height: auto;
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+  height: 0;
+}

@@ -18,8 +18,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { ExpandabletextComponent } from './expandabletext/expandabletext.component';
 const config: SocketIoConfig = { url: 'http://localhost:8988', options: {} };
 
 
@@ -28,7 +30,8 @@ const config: SocketIoConfig = { url: 'http://localhost:8988', options: {} };
     AppComponent,
     SidebarComponent,
     CardholderComponent,
-    DialogComponent
+    DialogComponent,
+    ExpandabletextComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ const config: SocketIoConfig = { url: 'http://localhost:8988', options: {} };
     MatInputModule,
     MatDialogModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatExpansionModule
   ],
   providers: [],
   entryComponents: [DialogComponent],

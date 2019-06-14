@@ -1,0 +1,5 @@
+<span (click)="toggle()" id="title">{{ text }} <mat-icon style="vertical-align: middle">{{ show ? 'expand_less' : 'expand_more' }}</mat-icon></span>
+
+<div id="content" [class.hidden]="!show">
+  {{ content }}
+</div>

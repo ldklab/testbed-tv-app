@@ -3,12 +3,19 @@
   <b>Description:</b>
   <p>{{ data.description }}</p>
 
-  <b>Instruction:</b>
+  <div id="specificDiv" *ngIf="data.specific">
+    <app-expandabletext [expandText]="'Learn more'" [hideText]="'Less'" [content]="data.specific"></app-expandabletext>
+  </div>
+
+  <div id="instructionDiv" *ngIf="data.instruction">
+    <b>Instruction:</b>
     <ul>
       <li *ngFor="let step of data.instruction">{{ step }}</li>
     </ul>
+  </div>
 
-  <b>Information needed:</b><br>
+  <div id="informationDiv" *ngIf="data.inputs">
+    <b>Information needed:</b><br>
     <div *ngFor="let input of data.inputs">
       <mat-form-field>
         <span *ngIf="input.type !== 'select'">
@@ -23,6 +30,7 @@
           </span>
       </mat-form-field>
     </div>
+  </div>
 
     <!--
         {
