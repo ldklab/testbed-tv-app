@@ -2,8 +2,13 @@ const socketPORT = 8988;
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var bodyParser = require('body-parser');
 
-const readline = require('readline');
+app.use(bodyParser.json());       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
+
 
 app.listen(80);
 app.get('/', function (req, res) {
@@ -14,25 +19,22 @@ app.get('/', function (req, res) {
   res.send(html);
 });
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+app.post('/', function (req, res) {
+  let interaction = req.body;
 
+  io.emit('interaction', interaction);
 
-
-rl.question('Text:', (answer) => {
-  console.log(`Thank you for your valuable feedback: ${answer}`);
-
-  io.emit('message', {"text": answer});
-
-
-  rl.close();
+  res.status(201).send({"message": "notification request sent", "obj": interaction});
 });
 
 io.on('connection', function(socket){
-  console.log('a user connected');
+  console.log('Incoming connection on Socket.io');
+
+  socket.on('reply', function(reply) {
+    console.log("New reply: ", reply);
+  });
 });
+
 
 http.listen(socketPORT, function(){
   console.log(`listening on *:${socketPORT}`);

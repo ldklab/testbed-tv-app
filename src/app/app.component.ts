@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 import { SocketService } from './socket.service';
@@ -8,39 +8,41 @@ import { SocketService } from './socket.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public now: Date = new Date();
 
-  constructor(public dialog: MatDialog,
-    public socketService:SocketService) {
-      setInterval(() => {
-        this.now = new Date();
-      }, 1);
-  }
-
-  notification = {
-    title: "Danger",
-    description: "A new urecognizable device was plugged to the network. In order to better secure the network please perform the following actions and provide the requested information.",
+    notification = {
+    id: '6wdfq3w4f65q4256wrf4q',
+    title: 'Danger',
+    description: 'A new urecognizable device was plugged to the network. In order to better secure the network please perform the following actions and provide the requested information.',
     instruction: [
-      "Step 1",
-      "Step 2",
-      "Step 3",
-      "..."
+      'Step 1',
+      'Step 2',
+      'Step 3',
+      '...'
     ],
     inputs: [
       {
-        name: "Device name",
-        type: "text",
+        title: 'Device name',
+        name: 'device_name',
+        type: 'text',
         required: true
       },
       {
-        name: "Device type",
-        type: "select",
-        elements: ["TV", "Computer", "Smartphone", "Camera", "Custon device"],
+        title: 'Device type',
+        name: 'device_type',
+        type: 'select',
+        elements: [
+          {text: 'TV', val: 'tv'},
+          {text: 'Computer', val: 'computer'},
+          {text: 'Smartphone', val: 'smartphone'},
+          {text: 'Camera', val: 'camera'},
+          {text: 'Custom device', val: 'custom_device'}
+        ],
         required: true
       }
     ]
-  }
+  };
 /*
   notification = {
     title: "Warning",
@@ -48,20 +50,42 @@ export class AppComponent {
     specific: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non orci diam. Nam sollicitudin justo eu laoreet sodales. Fusce ut sollicitudin ligula. Vivamus sed pretium arcu. Nullam dignissim turpis risus, in lacinia ligula ultricies a. Cras eleifend nisl eu porttitor fringilla. Duis sed leo nec tortor malesuada dictum. Vivamus at orci eget tortor porta faucibus. Duis ex ligula, commodo sed metus quis, pharetra tincidunt metus. Sed non ornare odio, at porta ex."
   }*/
 
-  openDialog(){
+  constructor(public dialog: MatDialog,
+              public socketService: SocketService) {}
+
+  ngOnInit() {
+      setInterval(() => {
+        this.now = new Date();
+      }, 1);
+
+      this.socketService.getInteraction()
+      .subscribe(interaction => {
+        //console.log(interaction);
+        this.openDialog(interaction);
+      });
+  }
+
+  openDialog(interaction) {
+
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '400px',
-      data: this.notification,
+      data: interaction ? interaction : this.notification,
       disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      //this.animal = result;
+      console.log('Dialog result: ', result.inputs);
+      let data = {
+        id: result.id,
+        inputs: result.inputs.map(i => {
+          return {name: i.name, value: i.value};
+        })
+      };
+      this.socketService.reply(data);
     });
   }
 
-  openSnackBar(){
-    this.socketService.showSnackBar("Test");
+  openSnackBar() {
+    this.socketService.showSnackBar('Test');
   }
 }

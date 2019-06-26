@@ -7,11 +7,17 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent {
+
+  localData;
+
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data) {}
+    @Inject(MAT_DIALOG_DATA) public data) {
+      this.localData = data;
+    }
 
   onOkClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(this.localData);
+
   }
 }

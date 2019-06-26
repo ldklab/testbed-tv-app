@@ -1,30 +1,30 @@
-<h1 mat-dialog-title style="text-align: center; font-size: 30px">{{ data.title }}</h1>
+<h1 mat-dialog-title style="text-align: center; font-size: 30px">{{ localData.title }}</h1>
 <div mat-dialog-content>
   <b>Description:</b>
-  <p>{{ data.description }}</p>
+  <p>{{ localData.description }}</p>
 
-  <div id="specificDiv" *ngIf="data.specific">
-    <app-expandabletext [expandText]="'Learn more'" [hideText]="'Less'" [content]="data.specific"></app-expandabletext>
+  <div id="specificDiv" *ngIf="localData.specific">
+    <app-expandabletext [expandText]="'Learn more'" [hideText]="'Less'" [content]="localData.specific"></app-expandabletext>
   </div>
 
-  <div id="instructionDiv" *ngIf="data.instruction">
+  <div id="instructionDiv" *ngIf="localData.instruction">
     <b>Instruction:</b>
     <ul>
-      <li *ngFor="let step of data.instruction">{{ step }}</li>
+      <li *ngFor="let step of localData.instruction">{{ step }}</li>
     </ul>
   </div>
 
-  <div id="informationDiv" *ngIf="data.inputs">
+  <div id="informationDiv" *ngIf="localData.inputs">
     <b>Information needed:</b><br>
-    <div *ngFor="let input of data.inputs">
+    <div *ngFor="let input of localData.inputs">
       <mat-form-field>
         <span *ngIf="input.type !== 'select'">
-          {{ input.name }}: <input matInput [type]="input.type">
+          {{ input.title }}: <input matInput [type]="input.type" [(ngModel)]="input.value">
         </span>
         <span *ngIf="input.type === 'select'">
-            {{ input.name }}: <mat-select>
-                                <mat-option *ngFor="let element of input.elements; let i = index" value="asd">
-                                  {{ element }}
+            {{ input.title }}: <mat-select [(value)]="input.value">
+                                <mat-option *ngFor="let element of input.elements; let i = index" [value]="element.val">
+                                  {{ element.text }}
                                 </mat-option>
                               </mat-select>
           </span>
