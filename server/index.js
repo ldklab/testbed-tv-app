@@ -70,8 +70,8 @@ io.on('connection', function(socket){
     console.log("New reply: ", reply);
 
     request.put({
-      url: API_URL,
-      body: reply,
+      url: API_URL+'/devices/'+reply._id,
+      body: reply.inputs,
       json: true
     }, function(error, response, body){
       console.log("API Response: ", body);
