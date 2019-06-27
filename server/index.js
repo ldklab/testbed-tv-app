@@ -95,7 +95,7 @@ client.on('message', function (message, rinfo) {
   if(myObj.deviceType === 'TV') {
     console.log("Sending back to addr: " + rinfo.address + ":" + rinfo.port + '[deviceID: ' + deviceID + ']');
 
-    API_URL = myObj.address + ':' + myObj.port;
+    API_URL = myObj.API_URL;
 
     var deviceInfo = {
       "deviceID": deviceID,
