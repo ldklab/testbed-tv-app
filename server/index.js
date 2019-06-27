@@ -69,12 +69,16 @@ io.on('connection', function(socket){
   socket.on('reply', function(reply) {
     console.log("New reply: ", reply);
 
+    let FULL_API_URL = API_URL+'/interactions/'+reply._id;
+    console.log('Full API URL: ' + FULL_API_URL);
+
     request.put({
-      url: API_URL+'/devices/'+reply._id,
+      url: FULL_API_URL,
       body: reply.inputs,
       json: true
     }, function(error, response, body){
-      console.log("API Response: ", body);
+      console.log("API Response: ", response);
+      console.log("API Body: ", body);
     });
 
   });
