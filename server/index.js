@@ -16,6 +16,8 @@ var bodyParser = require('body-parser');
 
 const request = require('request');
 
+var API_URL;
+
 // ---------- DISCOVERY PROTOCOL ----------
 var UDP_PORT = 3017;
 var dgram = require('dgram');
@@ -69,7 +71,7 @@ io.on('connection', function(socket){
 
     request.put({
       url: API_URL,
-      body: interaction,
+      body: reply,
       json: true
     }, function(error, response, body){
       console.log("API Response: ", body);
@@ -88,6 +90,8 @@ client.on('message', function (message, rinfo) {
   console.log('Message: ', myObj);
   if(myObj.deviceType === 'TV') {
     console.log("Sending back to addr: " + rinfo.address + ":" + rinfo.port + '[deviceID: ' + deviceID + ']');
+
+    API_URL = myObj.address + ':' + myObj.port;
 
     var deviceInfo = {
       "deviceID": deviceID,
