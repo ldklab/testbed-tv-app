@@ -19,6 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { ExpandabletextComponent } from './expandabletext/expandabletext.component';
@@ -49,7 +50,8 @@ const config: SocketIoConfig = { url: 'http://localhost:8988', options: {} };
     MatDialogModule,
     MatSelectModule,
     MatSnackBarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatCheckboxModule
   ],
   providers: [],
   entryComponents: [DialogComponent],

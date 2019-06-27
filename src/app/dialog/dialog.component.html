@@ -18,8 +18,14 @@
     <b>Information needed:</b><br>
     <div *ngFor="let input of localData.inputs">
       <mat-form-field>
-        <span *ngIf="input.type !== 'select'">
-          {{ input.title }}: <input matInput [type]="input.type" [(ngModel)]="input.value">
+        <span *ngIf="input.type == 'text'">
+          {{ input.title }}: <input matInput type="text" [(ngModel)]="input.value">
+        </span>
+        <span *ngIf="input.type == 'textarea'">
+          {{ input.title }}: <textarea  matInput [(ngModel)]="input.value">
+        </span>
+        <span *ngIf="input.type == 'checkbox'">
+          <mat-checkbox matInput [(ngModel)]="input.value">{{ input.title }}</mat-checkbox>
         </span>
         <span *ngIf="input.type === 'select'">
             {{ input.title }}: <mat-select [(value)]="input.value">
@@ -31,14 +37,6 @@
       </mat-form-field>
     </div>
   </div>
-
-    <!--
-        {
-        name: "Device type",
-        type: "select",
-        elements: ["TV", "Computer", "Smartphone", "Camera", "Custon device"],
-        required: true
-    -->
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onOkClick()">Ok</button>
