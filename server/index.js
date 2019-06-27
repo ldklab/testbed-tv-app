@@ -78,6 +78,9 @@ io.on('connection', function(socket){
       json: true
     }, function(error, response, body){
       console.log("API Body: ", body);
+      if(error) {
+        console.log(colors.error(error));
+      }
     });
 
   });
