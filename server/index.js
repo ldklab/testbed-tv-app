@@ -77,7 +77,6 @@ io.on('connection', function(socket){
       body: reply.inputs,
       json: true
     }, function(error, response, body){
-      console.log("API Response: ", response);
       console.log("API Body: ", body);
     });
 
