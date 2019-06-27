@@ -49,6 +49,7 @@ client.bind(UDP_PORT);
 app.post('/', function (req, res) {
   let interaction = req.body;
 
+  console.log('Interaction: ', interaction);
   io.emit('interaction', interaction);
 
   res.status(201).send({"message": "notification request sent", "interaction": interaction});

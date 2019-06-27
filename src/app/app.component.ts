@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   public now: Date = new Date();
 
     notification = {
-    id: '6wdfq3w4f65q4256wrf4q',
+    _id: '6wdfq3w4f65q4256wrf4q',
     title: 'Danger',
     description: 'A new urecognizable device was plugged to the network. In order to better secure the network please perform the following actions and provide the requested information.',
     instruction: [
@@ -76,7 +76,7 @@ export class AppComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog result: ', result.inputs);
       const data = {
-        id: result.id,
+        _id: result._id,
         inputs: result.inputs.map(i => {
           return {name: i.name, value: i.value};
         })
