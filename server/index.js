@@ -14,6 +14,8 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var bodyParser = require('body-parser');
 
+const request = require('request');
+
 // ---------- DISCOVERY PROTOCOL ----------
 var UDP_PORT = 3017;
 var dgram = require('dgram');
@@ -64,6 +66,15 @@ io.on('connection', function(socket){
 
   socket.on('reply', function(reply) {
     console.log("New reply: ", reply);
+
+    request.put({
+      url: API_URL,
+      body: interaction,
+      json: true
+    }, function(error, response, body){
+      console.log("API Response: ", body);
+    });
+
   });
 });
 // ---------- END SOCKET.IO ROUTES ----------
