@@ -60,7 +60,7 @@ export class AppComponent implements OnInit {
 
       this.socketService.getInteraction()
       .subscribe(interaction => {
-        //console.log(interaction);
+        // console.log(interaction);
         this.openDialog(interaction);
       });
   }
@@ -75,7 +75,7 @@ export class AppComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog result: ', result.inputs);
-      let data = {
+      const data = {
         id: result.id,
         inputs: result.inputs.map(i => {
           return {name: i.name, value: i.value};
