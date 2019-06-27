@@ -24,6 +24,9 @@
         <span *ngIf="input.type == 'textarea'">
           {{ input.title }}: <textarea matInput type="text" [(ngModel)]="input.value"></textarea>
         </span>
+        <span *ngIf="input.type == 'checkbox'">
+          <mat-checkbox [(ngModel)]="input.value">{{ input.title }}</mat-checkbox>
+        </span>
         <span *ngIf="input.type === 'select'">
             {{ input.title }}: <mat-select [(value)]="input.value">
                                 <mat-option *ngFor="let element of input.elements; let i = index" [value]="element.value">
