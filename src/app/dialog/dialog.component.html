@@ -31,7 +31,7 @@
 
 
         <span *ngIf="input.type == 'button'">
-          <button mat-button (click)="input.value = 'true'">{{ input.title }}</button>
+          <button mat-button (click)="input.value = 'true'; onOkClick()">{{ input.title }}</button>
         </span>
 
         <mat-form-field *ngIf="input.type === 'select'">
