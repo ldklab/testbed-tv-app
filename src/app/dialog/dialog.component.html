@@ -14,7 +14,7 @@
     </ul>
   </div>
 
-  <div id="informationDiv" *ngIf="localData.inputs">
+  <div id="informationDiv" *ngIf="localData.inputs.length > 0">
     <b>Information needed:</b><br>
     <div *ngFor="let input of localData.inputs">
       <mat-form-field *ngIf="input.type == 'text'">
