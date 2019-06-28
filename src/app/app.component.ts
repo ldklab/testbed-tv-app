@@ -29,10 +29,10 @@ export class AppComponent implements OnInit {
         required: true
       },
       {
-        title: 'Check',
-        name: 'device_check',
+        title: 'Test check',
+        name: 'test_check',
         type: 'checkbox',
-        required: true
+        required: false,
       },
       {
         title: 'Device type',
