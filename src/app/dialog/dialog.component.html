@@ -17,24 +17,26 @@
   <div id="informationDiv" *ngIf="localData.inputs">
     <b>Information needed:</b><br>
     <div *ngFor="let input of localData.inputs">
-      <mat-form-field>
-        <span *ngIf="input.type == 'text'">
+      <mat-form-field *ngIf="input.type == 'text'">
           {{ input.title }}: <input matInput type="text" [(ngModel)]="input.value">
-        </span>
+      </mat-form-field>
+
         <span *ngIf="input.type == 'textarea'">
           {{ input.title }}: <textarea matInput type="text" [(ngModel)]="input.value"></textarea>
         </span>
+
         <span *ngIf="input.type == 'checkbox'">
           <mat-checkbox [(ngModel)]="input.value">{{ input.title }}</mat-checkbox>
         </span>
-        <span *ngIf="input.type === 'select'">
-            {{ input.title }}: <mat-select [(value)]="input.value">
-                                <mat-option *ngFor="let element of input.elements; let i = index" [value]="element.value">
-                                  {{ element.text }}
-                                </mat-option>
-                              </mat-select>
-          </span>
-      </mat-form-field>
+
+        <mat-form-field *ngIf="input.type === 'select'">
+          {{ input.title }}: <mat-select [(value)]="input.value">
+                              <mat-option *ngFor="let element of input.elements; let i = index" [value]="element.value">
+                                {{ element.text }}
+                              </mat-option>
+                            </mat-select>
+          </mat-form-field>
+
     </div>
   </div>
 </div>

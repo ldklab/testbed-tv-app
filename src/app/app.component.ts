@@ -29,15 +29,21 @@ export class AppComponent implements OnInit {
         required: true
       },
       {
+        title: 'Check',
+        name: 'device_check',
+        type: 'checkbox',
+        required: true
+      },
+      {
         title: 'Device type',
         name: 'device_type',
         type: 'select',
         elements: [
-          {text: 'TV', val: 'tv'},
-          {text: 'Computer', val: 'computer'},
-          {text: 'Smartphone', val: 'smartphone'},
-          {text: 'Camera', val: 'camera'},
-          {text: 'Custom device', val: 'custom_device'}
+          {text: 'TV', value: 'tv'},
+          {text: 'Computer', value: 'computer'},
+          {text: 'Smartphone', value: 'smartphone'},
+          {text: 'Camera', value: 'camera'},
+          {text: 'Custom device', value: 'custom_device'}
         ],
         required: true
       }
