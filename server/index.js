@@ -74,7 +74,7 @@ io.on('connection', function(socket){
 
     request.put({
       url: FULL_API_URL,
-      body: reply.inputs,
+      body: {data: reply.inputs},
       json: true
     }, function(error, response, body){
       console.log("API Body: ", body);
