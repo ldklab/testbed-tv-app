@@ -104,7 +104,12 @@ client.on('message', function (message, rinfo) {
       "name": "My Smart TV",
       "address": ip.address(),
       "port": 80,
-      "timestamp": Date.now()}
+      "timestamp": Date.now(),
+      "capabilities": {
+          "in": ["text"],
+          "out": ["text", "video", "audio", "notification"]
+        }
+      }
 
     var messageReply = new Buffer.from(JSON.stringify(deviceInfo));
     client.send(messageReply, 0, messageReply.length, rinfo.port, rinfo.address, function() {
