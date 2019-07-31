@@ -9,9 +9,9 @@
 
   <div id="instructionDiv" *ngIf="localData.instructions">
     <b>Instructions:</b>
-    <ul>
+    <ol>
       <li *ngFor="let step of localData.instructions">{{ step }}</li>
-    </ul>
+    </ol>
   </div>
 
   <div id="informationDiv" *ngIf="localData.inputs.length > 0">
