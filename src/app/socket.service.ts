@@ -22,7 +22,7 @@ export class SocketService {
 
       socket.on('interaction', (interaction) => {
          console.log(interaction);
-        this.interactionSubject.next(interaction);
+         this.interactionSubject.next(interaction);
       });
     }
 

@@ -7,10 +7,10 @@
     <app-expandabletext [expandText]="'Learn more'" [hideText]="'Less'" [content]="localData.specific"></app-expandabletext>
   </div>
 
-  <div id="instructionDiv" *ngIf="localData.instruction">
-    <b>Instruction:</b>
+  <div id="instructionDiv" *ngIf="localData.instructions">
+    <b>Instructions:</b>
     <ul>
-      <li *ngFor="let step of localData.instruction">{{ step }}</li>
+      <li *ngFor="let step of localData.instructions">{{ step }}</li>
     </ul>
   </div>
 

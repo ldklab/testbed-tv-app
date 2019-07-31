@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
     _id: '6wdfq3w4f65q4256wrf4q',
     title: 'Danger',
     description: 'A new urecognizable device was plugged to the network. In order to better secure the network please perform the following actions and provide the requested information.',
-    instruction: [
+    instructions: [
       'Step 1',
       'Step 2',
       'Step 3',
