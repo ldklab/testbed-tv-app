@@ -4,6 +4,17 @@
   flex-wrap: wrap;
 }
 
+#mainContainer{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#secondContainer{
+  width: 80%;
+  height: 90%;
+  color: black;
+}
+
 .myCard {
   width: 300px;
   /*margin-right: 15px;*/
@@ -28,8 +39,24 @@
   vertical-align: middle;
 }
 
+.videoHolder{
+  background-color: white;
+  border-radius: 5px;
+
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  vertical-align: middle;
+  height: 100%;
+}
+
 .myCard img{
   height: 100px;
+}
+
+.closeIcon{
+  text-align: right;
+  margin-right: 25px;
 }
 
 .myCard:hover, .myCard:focus{

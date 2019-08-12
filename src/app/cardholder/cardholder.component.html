@@ -1,6 +1,19 @@
-<div class="myCard" *ngFor="let card of cards" tabindex="1234">
-  <div class="imageHolder">
-    <img [src]="card.image">
+<div *ngIf="showCards" id="mainContainer">
+  <div class="myCard" *ngFor="let card of cards" tabindex="1234" (click)="playVideo(card)">
+    <div class="imageHolder">
+      <img [src]="card.image">
+    </div>
+    {{ card.title }}
   </div>
-  {{ card.title }}
+</div>
+
+
+<div *ngIf="!showCards" id="secondContainer">
+  <div class="videoHolder">
+    <div class="closeIcon" (click)='closeVideo()'>
+        <mat-icon color='primary'>clear</mat-icon>
+    </div>
+    <span *ngIf="loadingVideo">Loading...</span>
+    <iframe width="100%" height="90%" [src]="videoUrl" (load)="videoLoaded()" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+  </div>
 </div>
